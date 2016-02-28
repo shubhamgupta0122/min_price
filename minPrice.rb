@@ -13,8 +13,8 @@ class MinPrice
 		qsite = @sites.select { |site| site[:name] == qsite }
 		qsite = qsite[0]
 		page = @agent .get ( qsite[:url] .sub("%s", qword) )
-		name = page .at( qsite[:item_name] ) .text .strip
-		price = page .at( qsite[:item_price] ) .text
+		name = page .at_xpath( qsite[:item_name] ) .text .strip
+		price = page .at_xpath( qsite[:item_price] ) .text
 		price = price .sub( "Rs." , "" ) .delete(",") .strip .delete(" ") .to_i
 		{name: name, price: price}
 	end
