@@ -28,16 +28,22 @@ class MinPrice
 	end
 
 	def search_all(qword)
+		mutex = Mutex.new
+		results = []
 		threads = []
 		@sites = YAML.load_file('sites.yml')
 		@sites.each do |site|
 			threads << Thread.new do
-				puts "#{search_site(qword, site[:name])}\n\n-----------"
+				result = search_site(qword, site[:name])
+				mutex.synchronize do
+					results << result
+				end
 			end
 		end
 		threads.each do |t|
 			t.join
 		end
+		results
 	end
 
 end

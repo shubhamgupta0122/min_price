@@ -12,5 +12,5 @@ ARGV.each do |q|
 	print "\n"
 
 	# Call the actual logic
-	min.search_all("#{q}")
+	puts min.search_all("#{q}")
 end
