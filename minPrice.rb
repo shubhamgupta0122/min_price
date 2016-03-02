@@ -17,11 +17,13 @@ class MinPrice
 		
 		name = page .at_xpath( qsite[:item_name] )
 		price = page .at_xpath( qsite[:item_price] )
+		image = page .at_xpath( qsite[:item_img] )
 		
-		if ( name && price )
+		if ( name && price && image)
 			name = name.text.strip
 			price = price.text.sub("Rs.","").delete(",").delete(" ").strip.to_i
-			{site_name: qsite[:name], item_name: name, item_price: price}
+			image = image.attributes["src"].text
+			{site_name: qsite[:name], item_name: name, item_price: price, item_img: image}
 		else
 			"Error Occured"
 		end

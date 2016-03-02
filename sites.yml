@@ -4,18 +4,22 @@
   :url: http://www.amazon.in/s/ref=nb_sb_noss?url=search-alias%3Daps&field-keywords=%s
   :item_name: //li[contains(@id,'result_0')]//h2[contains(@class,'access-title')]
   :item_price: //li[contains(@id,'result_0')]//span[contains(@class,'s-price')]
+  :item_img: //li[contains(@id,'result_0')]//img
 
 - :name: Flipkart
   :url: http://www.flipkart.com/search?q=%s
   :item_name: //div[@id='products']//div[contains(@class,'title')]/a
   :item_price: //div[@id='products']//div[contains(@class,'final')]/span
+  :item_img: (//div[@id='products']//img)[1]
 
 - :name: Snapdeal
   :url: http://www.snapdeal.com/search?keyword=%s
-  :item_name: //div[@id='products']//p[contains(@class,'product-title')]
+  :item_name: //div[@id='products']//div[contains(@class,'product-tuple-description')]//p[contains(@class,'product-title')]
   :item_price: //div[@id='products']//span[contains(@class,'product-price')]
+  :item_img: //div[@id='products']//div[contains(@class,'product-tuple-image')]//img
 
 - :name: Ebay
   :url: http://www.ebay.in/sch/i.html?&_nkw=%s
-  :item_name: //h3[contains(@class,'title')]/a
-  :item_price: //li[contains(@class,'price')]/span
+  :item_name: //li[contains(@id,'item')]//a[@class='vip']
+  :item_price: //li[contains(@id,'item')]//li[contains(@class,'price')]/span
+  :item_img: //li[contains(@id,'item')]//img[contains(@class,'img')]
